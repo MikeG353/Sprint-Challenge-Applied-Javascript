@@ -34,7 +34,7 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
     })
 
     // creating function 
-    function makeArticle({topic:headline, topic:image, topic:author}){
+    function makeArticle({headline, image, author}){
 
         //create elements
         const articleCard = document.createElement('div');
@@ -57,6 +57,10 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
 
         //add structure
         articleCard.appendChild(articleHeadline);
+        articleCard.appendChild(articleAuthor);
+        articleAuthor.appendChild(articleImgContainer);
+        articleImgContainer.appendChild(articleAuthorImg);
+        articleAuthor.appendChild(articleSigniture);
 
     
         //return component
