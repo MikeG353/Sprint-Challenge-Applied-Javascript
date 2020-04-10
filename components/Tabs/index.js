@@ -15,7 +15,7 @@ let topicsDiv = document.querySelector('.topics')
 axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
 // on success
     .then((response) => {
-        console.log(response.data.topics)
+        
         let newArray = response.data.topics.map(topic => makeTab(topic))
         newArray.forEach(topic => topicsDiv.appendChild(topic));
     }
