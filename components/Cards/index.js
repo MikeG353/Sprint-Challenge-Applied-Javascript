@@ -23,11 +23,23 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
     .then((response) => {
         console.log(response);
         let bsArray = response.data.articles.bootstrap.map(article => makeArticle(article));
-            // (article.headline, article.authorPhoto, article.authorName));
+        let jsArray = response.data.articles.javascript.map(article => makeArticle(article));
+        let techArray = response.data.articles.technology.map(article => makeArticle(article));
+        let jqArray = response.data.articles.jquery.map(article => makeArticle(article));
+        let nodeArray = response.data.articles.node.map(article => makeArticle(article));
+        
         console.log(bsArray)
+        console.log(jsArray)
+        console.log(techArray)
+        console.log(jqArray)
+        console.log(nodeArray)
 
-    // let newArray = response.data.topics.map(topic => makeTab(topic))
-    // newArray.forEach(topic => topicsDiv.appendChild(topic));
+        let cardContainter = document.querySelector('.cards-container');
+        bsArray.forEach(topicCard => cardContainter.appendChild(topicCard));
+        jsArray.forEach(topicCard => cardContainter.appendChild(topicCard));
+        techArray.forEach(topicCard => cardContainter.appendChild(topicCard));
+        jqArray.forEach(topicCard => cardContainter.appendChild(topicCard));
+        nodeArray.forEach(topicCard => cardContainter.appendChild(topicCard));
     })
 
     .catch((error) =>{
