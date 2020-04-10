@@ -7,3 +7,37 @@
 //
 //  Each tab should look like this:
 //    <div class="tab">topic here</div>
+
+// query selector for append later
+let topicsDiv = document.querySelector('.topics')
+
+// axios get request
+axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
+// on success
+    .then((response) => {
+        
+        let newArray = response.data.topics.map(topic => makeTab(topic))
+        newArray.forEach(topic => topicsDiv.appendChild(topic));
+    }
+    
+    )
+    .catch((error)=>{
+        console.log(error)
+
+    })
+function makeTab(topic){
+
+    //create element
+    const topicTab = document.createElement('div');
+
+    // apply calss
+    topicTab.classList.add('tab');
+
+    // add text content
+    topicTab.textContent = topic;
+
+
+
+    //return tab
+    return topicTab;
+}
